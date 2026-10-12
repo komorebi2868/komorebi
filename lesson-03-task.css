@@ -27,7 +27,7 @@
    * 操作前：四张作品卡上下紧挨着，中间没有空隙。
    * 操作后：四张卡之间出现 30px 的间隙，看得出是四块独立的卡片了。
    * ======================================================== */
-  display: block;
+  display: grid;
 
   /* ============ TODO 02（简单）：桌面上一行放两张卡 ============
      【修改边界】只改本任务注释指定的占位代码；保留函数、路由、选择器等外层结构，也不要提前修改其他课次 TODO。
@@ -50,7 +50,7 @@
    * 操作前：四张卡仍然是竖着一列排下来。
    * 操作后：桌面宽度下变成 **2×2 四宫格**，这是本课变化最大的一步。
    * ==================================================== */
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 30px;
 }
 
@@ -86,7 +86,7 @@
 .work-cover img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover;
 }
 
 .work-card {
@@ -117,7 +117,7 @@
 .work-card a {
   display: block;
   color: inherit;
-  text-decoration: none;
+  text-decoration: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .work-copy {
@@ -146,7 +146,7 @@
    * 操作后：卡片轻轻上浮 4px，阴影加深，像被"拿起来"一点。
    *         按 Tab 键让焦点进入卡片里的链接，也有同样效果。
    * ================================================================ */
-  transform: none;
+  transform:translateY(-4px);
   box-shadow: 0 16px 38px rgba(52, 60, 56, 0.14);
 }
 
@@ -173,7 +173,7 @@
  * ================================================ */
 @media (max-width: 640px) {
   .portfolio-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 }
 
